@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial;
+    margin: 0;
+  }
+  
+  header {
+    padding: 40px;
+    text-align: center;
+    background: #13293d;
+    color: #fff;
+  }
+  
