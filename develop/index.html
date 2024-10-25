@@ -8,6 +8,7 @@
     <title>Budget App</title>
 </head>
 <body>
+    <div class="container">
     <!-- Header content goes here -->
     <header>
         <h1>Header content goes here</h1>
@@ -15,16 +16,29 @@
     <main>
 <!-- this section is for the form -->
         <section>
-            <form>
-                <label>Monthly Income</label>
-                <input>
-                <label>Expense Name</label>
-                <input>
-                <label>Monthy Expense ($)</label>
-                <input>
-            </form>
+            <form id="budgetForm"></form>
+                <label for="monthlyIncome">Monthly Income</label>
+                <input type="text" id="monthlyIncome" placeholder="Enter your monthly income" required></input>
 
-        </section>
+                <button onclick="()">Submit</button>
+
+            </section>
+        </div>
+        
+        <section>
+
+                <label for="expenseName">Expense Name</label>
+                <input type="text" id="expenseName" placeholder="Enter the expense name" required></input>
+
+                <label for="expenseAmount">Expense Amount ($)</label>
+                <input type="text" id="expenseAmount" placeholder="Enter monthly expense" required>
+
+               <button onclick="()">Add expense</button>
+
+            </section>    
+
+        
+
 <!-- this section is for the table element -->
 
         <section>
@@ -58,6 +72,8 @@
     <footer>
         <h2>Footer content goes here</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
