@@ -15,34 +15,25 @@
     <main>
 <!-- this section is for the form -->
         <section>
+            <div>
+            <form id="budgetForm-el"></form>
+                <label for="monthlyIncome">Monthly Income</label>
+                <input type="text" id="monthlyIncome" placeholder="Enter your monthly income" required></input>
+            </div>
+        <div>
+                <label for="expenseName">Expense Name</label>
+                <input type="text" id="expenseName" placeholder="Enter the expense name" required></input>
 
-            <form>
-                <div>
-                    <label>Monthly Income</label>
-                    <input>
-                </div>
-               
-                <div>
-                    <label>Expense Name</label>
-                    <input>
-                </div>
-               
-                <label>Monthy Expense ($)</label>
-                <input>
-
-                <button>Submit</button>
-
-            </form>
-
-        </section>
-
+                <label for="expenseAmount">Expense Amount ($)</label>
+                <input type="text" id="expenseAmount" placeholder="Enter monthly expense" required>
             
-    
-<!-- buttons section-->
-       
-           
-          
-       
+                <!-- this button will add an expense if you need to add another expense and also subtract it from the income-->
+                <button onclick="addExpense()">Add Expense</button>
+
+            </section>    
+
+        </div>
+         
         
     </main>
     <!-- Footer content goes here -->
