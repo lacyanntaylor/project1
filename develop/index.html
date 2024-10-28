@@ -8,44 +8,43 @@
 </head>
 <body>
     <div class="container">
-    <!-- Header content goes here -->
-    <header>
-        <h1>Header content goes here</h1>
-    </header>
-    <main>
-<!-- this section is for the form -->
-        <section>
-            <div>
-            <form id="budgetForm-el"></form>
+
+    
+        <h1>Transaction Tracker</h1>
+  
+            <form id="transaction-form"></form>
+
+          
                 <label for="monthlyIncome">Monthly Income</label>
-                <input type="text" id="monthlyIncome" placeholder="Enter your monthly income" required></input>
-            </div>
-        <div>
+                <input type="number" id="monthlyIncome" placeholder="Enter your monthly income" required></input>
+            
+           
                 <label for="expenseName">Expense Name</label>
                 <input type="text" id="expenseName" placeholder="Enter the expense name" required></input>
-
-                <label for="expenseAmount">Expense Amount ($)</label>
-                <input type="text" id="expenseAmount" placeholder="Enter monthly expense" required>
-            
-                <!-- this button will add an expense if you need to add another expense and also subtract it from the income-->
-                <button onclick="addExpense()">Add Expense</button>
-
-            </section>    
-
-        </div>
          
-        
-    </main>
-    <!-- Footer content goes here -->
-    <footer>
-        <h2>The Budget App</h2>
-        <ul>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </footer>
+                <label for="expenseAmount">Expense Amount ($)</label>
 
-    <script src="script.js"></script>
+    </form>
+
+    <div class="expense-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Monthly Income</th>
+                    <th>Expense Name</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody id="expense-list"></tbody>
+        </table>
+        <div class="total-amount">
+            <strong>Total:</strong> $<span id="total-amount">0</span>
+        </div>
+    </div>
+           
+
+
+    <script src="develop/assets/js/script.js"></script>
 </body>
 
 </html>
