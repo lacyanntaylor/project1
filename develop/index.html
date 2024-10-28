@@ -9,57 +9,44 @@
 </head>
 <body>
     <div class="container">
-    <!-- Header content goes here -->
-    <header>
-        <h1>Header content goes here</h1>
-    </header>
-    <main>
-<!-- this section is for the form -->
-        <section>
-            <form id="budgetForm"></form>
+    
+        <h1>Transaction Tracker</h1>
+  
+            <form id="transaction-form"></form>
+
+          
                 <label for="monthlyIncome">Monthly Income</label>
-                <input type="text" id="monthlyIncome" placeholder="Enter your monthly income" required></input>
-
-                <button onclick="()">Submit</button>
-
-            </section>
-        </div>
-        
-        <section>
-
+                <input type="number" id="monthlyIncome" placeholder="Enter your monthly income" required></input>
+            
+           
                 <label for="expenseName">Expense Name</label>
                 <input type="text" id="expenseName" placeholder="Enter the expense name" required></input>
-
+         
                 <label for="expenseAmount">Expense Amount ($)</label>
-                <input type="text" id="expenseAmount" placeholder="Enter monthly expense" required>
+                <input type="number" id="expenseAmount" placeholder="Enter monthly expense" required>
 
-               <button onclick="()">Add expense</button>
+                <button onclick="addExpense()">Submit</button>
 
-            </section>    
+    </form>
 
-        
-
-
-            
-    
-<!-- buttons section-->
-        <div>
-            <button>Add Expense</button>
-            <button>Reset</button>
-            <button>Delete last entry</button>
+    <div class="expense-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Monthly Income</th>
+                    <th>Expense Name</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody id="expense-list"></tbody>
+        </table>
+        <div class="total-amount">
+            <strong>Total:</strong> $<span id="total-amount">0</span>
         </div>
-        
-    </main>
-    <!-- Footer content goes here -->
-    <footer>
-        <h2>The Budget App</h2>
-        <ul>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </footer>
+    </div>
+           
 
-    <script src="script.js"></script>
+    <script src="develop/assets/js/script.js"></script>
 </body>
 
 </html>
