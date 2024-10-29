@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script defer src="assets/js/calculator.js"></script>
+    <title>Calculator</title>
+</head>
+<body>
+    <header><h1>Calculator</h1></header>
+    <main>
+        <div>
+            <label for="firstNum-el">First Number</label>
+            <input type="number" id="firstNum-el" placeholder="Enter Number">
+            <label for="secondNum-el">Second Number</label>
+            <input type="number" id="secondNum-el" placeholder="Enter Number">
+        </div>
+        <br>
+       <div>
+            <button class="button is-success is-focused" onclick="sum()">Add</button>
+            <button class="button is-warning is-focused" onclick="sub()">Substract</button>
+            <button class="button is-link is-focused" onclick="mult()">Multiply</button>
+            <button class="button is-info is-focused" onclick="div()">Divide</button>
+       </div>
+       <br>
+       <span id="sum-el"></span>
+       <br>
+       <span id="save-el"></span>
+    </main>
+</body>
+</html>
+
