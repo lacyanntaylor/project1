@@ -1,49 +1,64 @@
+// Array to store last three results
+let memory = [];
 
-const save = document.getElementById('save-el')
-let sumTot = document.getElementById('sum-el')
+// Update memory table with latest entries
+const updateMemoryTable = () => {
+    const memoryTable = document.getElementById('memoryTable-el');
+    memoryTable.innerHTML = ''; // Clear existing rows
 
-function sum (){
+    memory.forEach(result => {
+        const row = document.createElement('tr');
+        const cell = document.createElement('td');
+        cell.textContent = result;
+        row.appendChild(cell);
+        memoryTable.appendChild(row);
+    });
+};
+
+// Add result to memory 
+const addToMemory = (result) => {
+    memory.unshift(result); // Add new result 
+    localStorage.setItem('memory', JSON.stringify(memory)); // Save to local storage
+    updateMemoryTable();
+};
+
+// Calculator functions with arrow syntax
+const sum = () => {
     const firstNum = parseFloat(document.getElementById('firstNum-el').value);
     const secondNum = parseFloat(document.getElementById('secondNum-el').value);
-    let result = firstNum + secondNum;
-    sumTot.textContent = `The sum is: ${result}`;
+    const result = firstNum + secondNum;
 
-    saveMemory (result);
-}
-function sub (){
+    document.getElementById('sum-el').textContent = `The result is: ${result}`;
+    addToMemory(result);
+};
+
+const sub = () => {
     const firstNum = parseFloat(document.getElementById('firstNum-el').value);
     const secondNum = parseFloat(document.getElementById('secondNum-el').value);
-    let result = firstNum - secondNum;
-    sumTot.textContent = `The difference is: ${result}`;
+    const result = firstNum - secondNum;
 
-    saveMemory (result);
-}
-function mult (){
+    document.getElementById('sum-el').textContent = `The result is: ${result}`;
+    addToMemory(result);
+};
+
+const mult = () => {
     const firstNum = parseFloat(document.getElementById('firstNum-el').value);
     const secondNum = parseFloat(document.getElementById('secondNum-el').value);
-    let result = firstNum * secondNum;
-    sumTot.textContent = `The product is: ${result}`;
+    const result = firstNum * secondNum;
 
-    saveMemory (result);
-}
-function div (){
+    document.getElementById('sum-el').textContent = `The result is: ${result}`;
+    addToMemory(result);
+};
+
+const div = () => {
     const firstNum = parseFloat(document.getElementById('firstNum-el').value);
     const secondNum = parseFloat(document.getElementById('secondNum-el').value);
-    let result = firstNum / secondNum;
-    sumTot.textContent = `The quotient is: ${result}`;
+    if (secondNum === 0) {
+        document.getElementById('sum-el').textContent = 'Error: Division by zero';
+        return;
+    }
+    const result = firstNum / secondNum;
 
-    saveMemory (result);
-}
-
-const openCalculatorLink = () => {
-    window.open('calculator.html', '_same');
-}
-
-const saveMemory = (result) => {
-    let memArray = JSON.parse(localStorage.getItem('memArray')) || [];
-    memArray.unshift(result);
-
-    localStorage.setItem('memArray', JSON.stringify(memArray));
-
-    save.textContent = `Memory: ${memArray}`;
-}
+    document.getElementById('sum-el').textContent = `The result is: ${result}`;
+    addToMemory(result);
+};
