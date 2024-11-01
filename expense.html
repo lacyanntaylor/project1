@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/toggle.css">
+    <link rel="stylesheet" href="./assets/css/toggle.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -33,18 +33,16 @@
                         <th>Monthly Expense ($)</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tableBody">
                     <!--Rows will be added here dynamically using JS-->
-                    <tr>
+                   <!-- <tr>
                         <span id="result"></span>
-                        <script>
-                            document.getElementById('result').innerHTML=localStorage.getItem("textvalues");
-                        </script>
+                       //table in js//
                         <td><span id ="result"></span></td>
                         <td>Cellphone placeholder</td>
                         <td>175 placeholder</td>
                     </tr>
-                    <!-- Add a total row -->
+                    Add a total row -->
                     <tr class="bg-light">
                         <td colspan="2" class="text-right"><strong>Total Monthly Expenses:</strong></td>
                         <td><strong>$175</strong></td>
@@ -96,9 +94,10 @@
     </footer>
 
     
-    <script src="assets/js/toggle.js"></script>
-    <script src="assets/js/calculator.js"></script>
-    <script src="assets/js/expense.js"></script>
+    <script src="./assets/js/toggle.js"></script>
+    <script src="./assets/js/calculator.js"></script>
+    <script src="./assets/js/expense.js"></script>
+    <script src="./assets/js/script.js"></script>
 
 
 </body>

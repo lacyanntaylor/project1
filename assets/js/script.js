@@ -1,5 +1,5 @@
 const form = document.querySelector('#transaction-form');
-const incomeInput = documemnt.querySelector('#monthlyIncome');
+const incomeInput = document.querySelector('#monthlyIncome');
 const expenseNameInput = document.querySelector('#expenseName');
 const expenseAmountInput = document.querySelector('#expenseAmount');
 const expenseList = document.querySelector('expense-list');
@@ -15,6 +15,7 @@ let expenses = [];
 //function to add expenses
 
 function addExpense() {
+    console.log("test");
     event.preventDefault();
 
     const income = parseFloat(incomeInput.value);
@@ -42,19 +43,21 @@ function addExpense() {
 
     //update total
     totalExpenses += expenseAmount;
-    updateExpenseList();
-    updateTotal();
+    //updateExpenseList();
+   // updateTotal();
 
     //clear inputs
     expenseNameInput.value = '';
     expenseAmountInput.value = '';
+    navigateToPage();
 }
 
 //function to update expense list
 
 function updateExpenseList() {
+    if(expenseList){
     expenseList.innerHTML = ''; //clear table
-
+    };
     expenses.forEach(expense => {
         const row = document.createElement('tr');
 
@@ -71,7 +74,9 @@ function updateExpenseList() {
         row.appendChild(nameCell);
         row.appendChild(amountCell);
 
-        expenseList.appendChild(row);
+        if(expenseList){
+            expenseList.appendChild(row);
+        }
     });
 }
 
@@ -81,5 +86,18 @@ function updateTotal() {
     totalAmountDisplay.textContent = totalExpenses.toFixed(2);
 }
 
+
+
+const formData = {
+    monthlyIncome: incomeInput,
+    expenseName: expenseNameInput,
+    expenseAmount: expenseAmountInput,
+};
+
+storeLocalStorage(formData);
+
 //add event listener to form submit
 form.addEventListener('submit', addExpense);
+
+//function openNewPage() { window.open("https://example.com", "_blank"); }
+function navigateToPage() { window.location.href = "expense.html";}
