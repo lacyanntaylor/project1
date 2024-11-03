@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +7,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     
 
-    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Budget App</title>
 </head>
-<body>
+<body class="bg-light">
+    <header class="bg-primary text-white text-center p-3">
+        <h1>Expense Summary</h1>
+        <input type="button" value="Light/dark" class="btn btn-warning" id="button">
+    </header>
+    <br>
     <div class="container">
         
 
@@ -32,9 +38,9 @@
                 <label for="expenseAmount">Expense Amount ($)</label>
                 <input type="number" id="expenseAmount" placeholder="Enter monthly expense" required>
 
-                <a href="./expense.html">
-                <button onclick="addExpense()">Submit</button>
-            </a>
+
+                <button type="submit">Submit</button>
+        
     </form>
 
     <div class="expense-table">
@@ -53,8 +59,82 @@
         </div>
     </div>
 
+    <main class="container mt-4">
+        <section>
+            <table class="table table-hover">
+                <thead>
+                    <tr class="bg-info">
+                        <th>Monthly Income</th>
+                        <th>Expense Name</th>
+                        <th>Monthly Expense ($)</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!--Rows will be added here dynamically using JS-->
+                   <!-- <tr>
+                        <span id="result"></span>
+                       //table in js//
+                        <td><span id ="result"></span></td>
+                        <td>Cellphone placeholder</td>
+                        <td>175 placeholder</td>
+                    </tr>
+                    Add a total row -->
+                    <tr class="bg-light">
+                        <td colspan="2" class="text-right"><strong>Total Monthly Expenses:</strong></td>
+                        <td><strong>$175</strong></td>
+                    </tr>
+                </tbody>
+            </table>
 
+            <div class="mt-3 text-center">
+                <button class="btn btn-danger">Reset</button>
+                <button class="btn btn-warning">Delete Last Entry</button>
+                <button class="btn btn-info">Back</button>
+              
+            </div>
+            <br>
+
+            <div class="text-center"> 
+                <button class="btn btn-success" onclick="openCalculatorLink()">Calculator</button>
+            </div>
+           
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white text-center p-4 mt-4">
+        <h2>The Budget App</h2>
+        <p class="mb-2">Manage your expenses here.</p>
+        <ul class="list-inline">
+            <li class="list-inline-item">
+                <a href="#about" class="text-white">About Us</a>
+            </li>
+            <li class="list-inline-item">
+                <a href="#contact" class="text-white">Contact</a>
+            </li>
+            <li class="list-inline-item">
+                <a href="#faq" class="text-white">FAQ</a>
+            </li>
+        </ul>
+        <div class="mt-2">
+            <a href="#" class="text-white" title="Follow us on Twitter">
+                <i class="fa fa-twitter"></i>
+            </a>
+            <a href="#" class="text-white mx-3" title="Like us on Facebook">
+                <i class="fa fa-facebook"></i>
+            </a>
+            <a href="#" class="text-white" title="Follow us on Instagram">
+                <i class="fa fa-instagram"></i>
+            </a>
+        </div>
+        <p class="mt-3 mb-0">© 2024 Budget App. All Rights Reserved.</p>
+    </footer>
+
+    
+    <script src="./assets/js/toggle.js"></script>
+    <script src="./assets/js/calculator.js"></script>
+    <script src="./assets/js/expense.js"></script>
     <script src="./assets/js/script.js"></script>
-</body>
 
+
+</body>
 </html>

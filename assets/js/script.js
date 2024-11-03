@@ -14,7 +14,7 @@ let expenses = [];
 
 //function to add expenses
 
-function addExpense() {
+function addExpense(event) {
     console.log("test");
     event.preventDefault();
 
@@ -49,7 +49,7 @@ function addExpense() {
     //clear inputs
     expenseNameInput.value = '';
     expenseAmountInput.value = '';
-    navigateToPage();
+   // navigateToPage();
 }
 
 //function to update expense list
@@ -88,16 +88,16 @@ function updateTotal() {
 
 
 
-const formData = {
-    monthlyIncome: incomeInput,
-    expenseName: expenseNameInput,
-    expenseAmount: expenseAmountInput,
-};
+//const formData = {
+   // monthlyIncome: incomeInput,
+    //expenseName: expenseNameInput,
+   // expenseAmount: expenseAmountInput,
+//};
 
-storeLocalStorage(formData);
+// storeLocalStorage(formData);
 
 //add event listener to form submit
 form.addEventListener('submit', addExpense);
 
 //function openNewPage() { window.open("https://example.com", "_blank"); }
-function navigateToPage() { window.location.href = "expense.html";}
+//function navigateToPage() { window.location.href = "expense.html";}
