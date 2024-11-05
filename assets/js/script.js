@@ -25,6 +25,7 @@ function addExpense(event) {
     //validate inputs
     if (!income || !expenseName || !expenseAmount || expenseAmount <= 0) {
         alert("please fill out all required fields");
+        console.log("test1");
         return;
     }
 
@@ -49,7 +50,7 @@ function addExpense(event) {
     //clear inputs
     expenseNameInput.value = '';
     expenseAmountInput.value = '';
-   // navigateToPage();
+    //navigateToPage();
 }
 
 //function to update expense list
@@ -88,13 +89,43 @@ function updateTotal() {
 
 
 
-//const formData = {
-   // monthlyIncome: incomeInput,
-    //expenseName: expenseNameInput,
-   // expenseAmount: expenseAmountInput,
-//};
+const formData = {
+    monthlyIncome: incomeInput,
+    expenseName: expenseNameInput,
+    expenseAmount: expenseAmountInput,
+};
+// Load data from localStorage
+function loadFromLocalStorage() {
+    const storedIncome = localStorage.getItem('monthlyIncome');
+    const storedExpenses = localStorage.getItem('expenses');
+    const storedTotal = localStorage.getItem('totalExpenses');
 
-// storeLocalStorage(formData);
+    if (storedIncome) {
+        monthlyIncome = parseFloat(storedIncome);
+        incomeInput.value = monthlyIncome;
+        incomeInput.disabled = true;
+    }
+
+    if (storedExpenses) {
+        expenses = JSON.parse(storedExpenses);
+    }
+
+    if (storedTotal) {
+        totalExpenses = parseFloat(storedTotal);
+    }
+
+    updateExpenseList();
+    updateTotal();
+}
+//storeLocalStorage(formData);
+function saveToLocalStorage() {
+    localStorage.setItem('monthlyIncome', monthlyIncome);
+    localStorage.setItem('expenses', JSON.stringify(expenses));
+    localStorage.setItem('totalExpenses', totalExpenses);
+}
+
+
+
 
 //add event listener to form submit
 form.addEventListener('submit', addExpense);
