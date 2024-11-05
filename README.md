@@ -22,6 +22,8 @@ Grab the code:
 
 bashCopygit clone git@github.com:lacyanntaylor/project1.git
 
+https://lacyanntaylor.github.io/project1/
+
 Just open index.html in your browser and you're good to go!
 
 How to Use It
