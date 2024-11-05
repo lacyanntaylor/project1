@@ -2,98 +2,14 @@ const form = document.querySelector('#transaction-form');
 const incomeInput = document.querySelector('#monthlyIncome');
 const expenseNameInput = document.querySelector('#expenseName');
 const expenseAmountInput = document.querySelector('#expenseAmount');
-const expenseList = document.querySelector('expense-list');
-const totalAmountDisplay = document.querySelector('total-amount');
+const expenseList = document.querySelector('#expense-list'); // Corrected to include '#'
+const totalAmountDisplay = document.querySelector('#total-amount'); // Corrected to include '#'
 
-
-
-//store the income expenses and total
+// Store the income expenses and total
 let monthlyIncome = 0;
 let totalExpenses = 0;
 let expenses = [];
 
-//function to add expenses
-
-function addExpense(event) {
-    console.log("test");
-    event.preventDefault();
-
-    const income = parseFloat(incomeInput.value);
-    const expenseName = expenseNameInput.value.trim();
-    const expenseAmount = parseFloat(expenseAmountInput.value);
-
-    //validate inputs
-    if (!income || !expenseName || !expenseAmount || expenseAmount <= 0) {
-        alert("please fill out all required fields");
-        console.log("test1");
-        return;
-    }
-
-    //setting monthly income
-    if (monthlyIncome === 0) {
-        monthlyIncome = income;
-        incomeInput.disabled = true; //disable income input after setting income
-    }
-
-    //add expense to array
-    const expense = {
-        name: expenseName,
-        amount: expenseAmount,
-    };
-    expenses.push(expense);
-
-    //update total
-    totalExpenses += expenseAmount;
-    //updateExpenseList();
-   // updateTotal();
-
-    //clear inputs
-    expenseNameInput.value = '';
-    expenseAmountInput.value = '';
-    //navigateToPage();
-}
-
-//function to update expense list
-
-function updateExpenseList() {
-    if(expenseList){
-    expenseList.innerHTML = ''; //clear table
-    };
-    expenses.forEach(expense => {
-        const row = document.createElement('tr');
-
-        const incomeCell = document.createElement('td');
-        incomeCell.textContent = `$${monthlyIncome.toFixed(2)}`;
-
-        const nameCell = document.createElement('td');
-        nameCell.textContent = `$${expense.amount.toFixed(2)}`;
-
-        const amountCell = document.createElement('td');
-        amountCell.textContent = `$${expense.amount.toFixed(2)}`;
-
-        row.appendChild(incomeCell);
-        row.appendChild(nameCell);
-        row.appendChild(amountCell);
-
-        if(expenseList){
-            expenseList.appendChild(row);
-        }
-    });
-}
-
-//function to update total amount 
-
-function updateTotal() {
-    totalAmountDisplay.textContent = totalExpenses.toFixed(2);
-}
-
-
-
-const formData = {
-    monthlyIncome: incomeInput,
-    expenseName: expenseNameInput,
-    expenseAmount: expenseAmountInput,
-};
 // Load data from localStorage
 function loadFromLocalStorage() {
     const storedIncome = localStorage.getItem('monthlyIncome');
@@ -117,18 +33,85 @@ function loadFromLocalStorage() {
     updateExpenseList();
     updateTotal();
 }
-//storeLocalStorage(formData);
+
+// Function to save data to localStorage
 function saveToLocalStorage() {
     localStorage.setItem('monthlyIncome', monthlyIncome);
     localStorage.setItem('expenses', JSON.stringify(expenses));
     localStorage.setItem('totalExpenses', totalExpenses);
 }
 
+// Function to add expenses
+function addExpense(event) {
+    event.preventDefault();
 
+    const income = parseFloat(incomeInput.value);
+    const expenseName = expenseNameInput.value.trim();
+    const expenseAmount = parseFloat(expenseAmountInput.value);
 
+    // Validate inputs
+    if (isNaN(income) || !expenseName || isNaN(expenseAmount) || expenseAmount <= 0) {
+        alert("Please fill out all required fields");
+        return;
+    }
 
-//add event listener to form submit
+    // Setting monthly income
+    if (monthlyIncome === 0) {
+        monthlyIncome = income;
+        incomeInput.disabled = true; // Disable income input after setting income
+    }
+
+    // Add expense to array
+    const expense = {
+        name: expenseName,
+        amount: expenseAmount,
+    };
+    expenses.push(expense);
+
+    // Update total
+    totalExpenses += expenseAmount;
+
+    // Update the display
+    updateExpenseList();
+    updateTotal();
+    saveToLocalStorage(); // Save data to local storage
+
+    // Clear inputs
+    expenseNameInput.value = '';
+    expenseAmountInput.value = '';
+}
+
+// Function to update expense list
+function updateExpenseList() {
+    if (expenseList) {
+        expenseList.innerHTML = ''; // Clear previous entries
+    }
+
+    expenses.forEach(expense => {
+        const row = document.createElement('tr');
+
+        const nameCell = document.createElement('td');
+        nameCell.textContent = expense.name;
+
+        const amountCell = document.createElement('td');
+        amountCell.textContent = `$${expense.amount.toFixed(2)}`;
+
+        row.appendChild(nameCell);
+        row.appendChild(amountCell);
+
+        if (expenseList) {
+            expenseList.appendChild(row);
+        }
+    });
+}
+
+// Function to update total amount
+function updateTotal() {
+    totalAmountDisplay.textContent = `$${totalExpenses.toFixed(2)}`;
+}
+
+// Add event listener to form submit
 form.addEventListener('submit', addExpense);
 
-//function openNewPage() { window.open("https://example.com", "_blank"); }
-//function navigateToPage() { window.location.href = "expense.html";}
+// Load data from local storage on page load
+window.addEventListener('DOMContentLoaded', loadFromLocalStorage);
