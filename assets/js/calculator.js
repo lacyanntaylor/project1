@@ -62,3 +62,6 @@ const div = () => {
     document.getElementById('sum-el').textContent = `The result is: ${result}`;
     addToMemory(result);
 };
+function openCalculatorLink() {
+    window.open('calculator.html', '_blank'); // Opens in a new tab
+}
